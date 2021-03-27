@@ -344,19 +344,19 @@ def run(text):
     lex = Lexer(text)
     tokens = lex.make_token()
     if(type(tokens)==str): return tokens
-    print("After Tokenization: ",tokens)
+    #print("After Tokenization: ",tokens)
     parser = Parser(tokens)
     tree = parser.pasrse()
     #print(parser.tot,len(tokens))
-    print(tree)
+    #print(tree)
     if(not tokens or parser.tot!= len(tokens)): 
         print("INVALID EXPRESSION")
         return
     #return interpretter(tree,zura)
     
 
-
+    intercode=[]
     ## code generation
-    print(tree)
+    #print(tree)
     code_generator(tree)
     return "OK"

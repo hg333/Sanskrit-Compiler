@@ -1,0 +1,33 @@
+X = 0
+input X
+ans = 1
+whilestatement3
+v4 = X > 0
+IFNOT v4 goto endwhile3
+v5 = ans * X
+ans = v5
+v7 = X - 1
+X = v7
+goto whilestatement3
+endwhile3
+output ans
+v9 = ans == 120
+IF v9 goto ifstatement10
+v11 = ans == 2
+IF v11 goto ifstatement12
+IF 1 goto ifstatement13
+goto ifstatement14
+ifstatement10
+v15 = ans + 5
+ans = v15
+output ans
+goto ifstatement14
+ifstatement12
+ans = 5
+goto ifstatement14
+ifstatement13
+v18 = 0 - ans
+ans = v18
+goto ifstatement14
+ifstatement14
+output ans

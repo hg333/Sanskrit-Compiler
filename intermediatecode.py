@@ -1,3 +1,15 @@
+
+
+
+import sys
+
+original_stdout = sys.stdout # Save a reference to the original standard output
+f= open('tac.txt', 'w')
+sys.stdout = f
+
+
+
+
 from nodes import NumberNode, BinOpNode, UnaryOpNode
 DIG ='1234567890'
 import basic
@@ -79,8 +91,8 @@ def operation(v1,v2,type,conditionals=False):
     elif type == TTLT: print(cur,'=',v1,'<',v2,sep=' ')
     elif type == TTGT: print(cur,'=',v1,'>',v2,sep=' ')
     elif type == TTNE: print(cur,'=',v1,'!=',v2,sep=' ')
-    elif type == TTAND: print(cur,'=',v1,'&&',v2,sep=' ')
-    elif type == TTOR: print(cur,'=',v1,'||',v2,sep=' ')
+    elif type == TTAND: print(cur,'=',v1,'*',v2,sep=' ')
+    elif type == TTOR: print(cur,'=',v1,'+',v2,sep=' ')
     else:
         pass
     return cur
@@ -99,7 +111,9 @@ def code_generator(tree):
                 print("IF", k,"goto ifstatement"+str(statement))
                 li.append(statement)
                 statement+=1
+            
             lst = statement
+            print("goto ifstatement"+str(lst))
             statement+=1
             cur=0
             for i in tree.node:
@@ -114,21 +128,18 @@ def code_generator(tree):
             statement+=1
             print("whilestatement"+str(cur))
             cond = code_generator(tree.node[0])
-            print(f'v{statement} = !{cond}')
-            cond = f'v{statement}'
-            statement+=1
-            print("IF",str(cond),"goto","endwhile"+str(cur),sep=' ')
+            print("IFNOT",str(cond),"goto","endwhile"+str(cur),sep=' ')
             k=code_generator(tree.node[1])
             print("goto whilestatement"+str(cur))
             print("endwhile"+str(cur))
         elif str(tree.op_tok) ==TTMINUS:
             val= code_generator(tree.node)
-            print(f'v{statement} = -{val}')
+            print(f'v{statement} = 0 - {val}')
             statement+=1
             return f'v{statement-1}'
         elif str(tree.op_tok) ==TTNOT:
             val= code_generator(tree.node)
-            print(f'v{statement} = -{val}')
+            print(f'v{statement} = ! {val}')
             statement+=1
             return f'v{statement-1}'
         elif str(tree.op_tok) == TTINPUT:

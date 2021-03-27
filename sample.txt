@@ -1,3 +1,5 @@
+X=0;
+
 IN X;
 
 VAR ans =1;
@@ -6,19 +8,9 @@ WHILE X>0 THEN
 {
     ans = (ans*X);
     X=(X-1);
-    IF X == 100 THEN
-    {
-        OUT ans;
-    }
-    ELSE
-    {
-        Y = 45;
-        OUT Y;
-    };
 };
 
-ans+0;
-
+OUT ans;
 IF ans == 120 THEN
 {
     ans= (ans+5);
@@ -30,6 +22,6 @@ ELIF ans==2 THEN
 }
 ELSE 
 {
-    ans =89;
+    ans =(- ans);
 };
 OUT ans;
