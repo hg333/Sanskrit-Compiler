@@ -2,9 +2,9 @@
 
 
 import sys
-
+import codecs
 original_stdout = sys.stdout # Save a reference to the original standard output
-f= open('tac.txt', 'w')
+f= codecs.open('tac.txt', 'w',encoding='utf-8')
 sys.stdout = f
 
 
@@ -36,7 +36,7 @@ TTGTE='GTE'
 
 TTAND ='AND'
 TTOR = 'OR'
-TTVAR = 'VAR'
+TTVAR = '123 DELETED VAR'
 TTNOT = 'NOT'
 TTIF = 'IF'
 TTWHILE = 'WHILE'

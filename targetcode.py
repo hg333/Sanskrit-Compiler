@@ -2,10 +2,10 @@
 
 import sys
 
+
 original_stdout = sys.stdout # Save a reference to the original standard output
 f= open('text.asm', 'w')
 sys.stdout = f
-
 
 tac = open("tac.txt",'r')
 

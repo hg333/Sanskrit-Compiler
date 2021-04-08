@@ -5,10 +5,10 @@ from interpretter import interpretter
 from symboltable import SymbolTable
 from intermediatecode import code_generator
 import string
-DIG ='1234567890'
+DIG ='1234567890०१२३४५६७८९'
 
-LETTERS = string.ascii_letters
-LETTERS_DIGITS = LETTERS +DIG
+LETTERS = string.ascii_letters+'अआइईउऊऋऌऍऎएऐऑऒओऔकखगघङचछजझञटठडढणतथदधनऩपफबभमयरऱलळऴवशषसहऺऻ़ऽािीुूृॄॅॆेैॉॊोौ्ॎॏॐ॒॑॓॔ॕॖॗक़ख़ग़ज़ड़ढ़फ़य़ॠॡॢॣ।॥'
+LETTERS_DIGITS = LETTERS + DIG
 
 TT_INT ='INT'
 TTMUL = 'MUL'
@@ -32,7 +32,7 @@ TTGTE='GTE'
 
 TTAND ='AND'
 TTOR = 'OR'
-TTVAR = 'VAR'
+TTVAR = '123 DELETED VAR'
 TTNOT = 'NOT'
 TTIF = 'IF'
 TTWHILE = 'WHILE'
@@ -85,7 +85,7 @@ class Lexer:
         self.current_char = self.text[self.pos] if self.pos< len(self.text) else None
     def make_token(self):
         ret=[]
-
+        #print("COOL",self.current_char)
         while self.current_char != None:
             if self.current_char in ' \t\n': self.advance()
             elif self.current_char =='+': ret.append(Token(TTPLUS)),self.advance()
@@ -117,7 +117,14 @@ class Lexer:
                 ret.append(self.make_number())
             elif self.current_char in LETTERS:
                 ret.append(self.make_identifier())
-            else: return 'Error in lexical analysis of '+  self.current_char
+            elif self.current_char.encode('utf-8') == b'\r':
+                self.advance()
+            else:
+
+                print("YAKAMASHI!!!") 
+                print(type(self.current_char),len(self.current_char))
+                return 'Error in lexical analysis of '+  str(self.current_char.encode('utf-8'))
+            #print(ret[-1])
         return ret
 
     def make_not_equal(self):
@@ -341,9 +348,13 @@ class Parser:
 zura = SymbolTable()
 
 def run(text):
+    #print(type(text),text)
     lex = Lexer(text)
     tokens = lex.make_token()
+    #print(LETTERS)
+    #print("OK",tokens)
     if(type(tokens)==str): return tokens
+    #print("LEXICAL A OK")
     #print("After Tokenization: ",tokens)
     parser = Parser(tokens)
     tree = parser.pasrse()

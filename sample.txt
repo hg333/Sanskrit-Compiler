@@ -1,8 +1,8 @@
 X=0;
-
+अ=0;
 IN X;
 
-VAR ans =1;
+ans =1;
 
 WHILE X>0 THEN
 {

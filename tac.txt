@@ -1,33 +1,34 @@
 X = 0
+अ = 0
 input X
 ans = 1
-whilestatement3
-v4 = X > 0
-IFNOT v4 goto endwhile3
-v5 = ans * X
-ans = v5
-v7 = X - 1
-X = v7
-goto whilestatement3
-endwhile3
+whilestatement4
+v5 = X > 0
+IFNOT v5 goto endwhile4
+v6 = ans * X
+ans = v6
+v8 = X - 1
+X = v8
+goto whilestatement4
+endwhile4
 output ans
-v9 = ans == 120
-IF v9 goto ifstatement10
-v11 = ans == 2
-IF v11 goto ifstatement12
-IF 1 goto ifstatement13
-goto ifstatement14
-ifstatement10
-v15 = ans + 5
-ans = v15
+v10 = ans == 120
+IF v10 goto ifstatement11
+v12 = ans == 2
+IF v12 goto ifstatement13
+IF 1 goto ifstatement14
+goto ifstatement15
+ifstatement11
+v16 = ans + 5
+ans = v16
 output ans
-goto ifstatement14
-ifstatement12
-ans = 5
-goto ifstatement14
+goto ifstatement15
 ifstatement13
-v18 = 0 - ans
-ans = v18
-goto ifstatement14
+ans = 5
+goto ifstatement15
 ifstatement14
+v19 = 0 - ans
+ans = v19
+goto ifstatement15
+ifstatement15
 output ans
