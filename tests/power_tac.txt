@@ -1,0 +1,15 @@
+ब = 0
+अ = 0
+input ब
+input अ
+मोक्ष = 1
+whilestatement4
+v5 = अ > 0
+IFNOT v5 goto endwhile4
+v6 = मोक्ष * ब
+मोक्ष = v6
+v8 = अ - 1
+अ = v8
+goto whilestatement4
+endwhile4
+output मोक्ष

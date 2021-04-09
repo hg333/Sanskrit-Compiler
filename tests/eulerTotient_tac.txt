@@ -1,0 +1,44 @@
+ब = 0
+अ = 2
+input ब
+मोक्ष = ब
+whilestatement4
+v5 = अ * अ
+v6 = v5 <= ब
+IFNOT v6 goto endwhile4
+v7 = ब / अ
+v8 = v7 * अ
+v9 = v8 == ब
+IF v9 goto ifstatement10
+goto ifstatement11
+ifstatement10
+v12 = मोक्ष / अ
+v13 = मोक्ष - v12
+ग = v13
+मोक्ष = ग
+goto ifstatement11
+ifstatement11
+whilestatement16
+v17 = ब / अ
+v18 = v17 * अ
+v19 = v18 == ब
+IFNOT v19 goto endwhile16
+v20 = ब / अ
+ब = v20
+goto whilestatement16
+endwhile16
+v22 = अ + 1
+अ = v22
+goto whilestatement4
+endwhile4
+v24 = ब > 1
+IF v24 goto ifstatement25
+goto ifstatement26
+ifstatement25
+v27 = मोक्ष / ब
+v28 = मोक्ष - v27
+ग = v28
+मोक्ष = ग
+goto ifstatement26
+ifstatement26
+output मोक्ष

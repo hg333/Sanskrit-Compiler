@@ -2,12 +2,18 @@
 
 import sys
 
+import codecs
 
 original_stdout = sys.stdout # Save a reference to the original standard output
-f= open('text.asm', 'w')
+f= codecs.open('text.asm', 'w',encoding='utf-8')
 sys.stdout = f
 
-tac = open("tac.txt",'r')
+
+# with codecs.open('sample.txt', encoding='utf-8') as f:
+#     i = f.read().encode('utf-8')
+#     basic.run(i.decode('utf-8'))
+
+tac = codecs.open("tac.txt",encoding='utf-8').read()
 
 t1="t1"
 t2="t2"
@@ -66,13 +72,16 @@ def normalize(register):
     print(f'yareyare{count}:')
     count+=1
 
-for code in tac:
+for code in tac.split('\n'):
     code = code.strip()
     v=code.split(' ')
     #print(v)
     if(len(v)==0): continue
     if(len(v)==1):
-        print(f'{v[0]}:')
+        if(v[0].encode('utf-8') in (b'\r', b'')): continue
+        else:
+            k=v[0].encode('utf-8') 
+            print(f'{v[0]}:')
     elif len(v)==2:
         if(v[0]=="input"):
             print("li $v0, 5")

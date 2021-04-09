@@ -1,0 +1,23 @@
+ब = 0
+input ब
+v2 = 0 - 1
+मोक्ष = v2
+त = 0
+whilestatement5
+v6 = ब > 0
+IFNOT v6 goto endwhile5
+input त
+v7 = त > मोक्ष
+v8 = त == 27
+v9 = v7 + v8
+IF v9 goto ifstatement10
+goto ifstatement11
+ifstatement10
+मोक्ष = त
+goto ifstatement11
+ifstatement11
+v13 = ब - 1
+ब = v13
+goto whilestatement5
+endwhile5
+output मोक्ष
