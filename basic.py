@@ -49,20 +49,48 @@ TTOUTPUT = 'OUT'
 
 TTLBRACE = 'LBRACE'
 TTRBRACE = 'RBRACE'
+
+
+# HINDI KEYWORDS
+
+HTTAND = 'च'
+HTTOR = 'वा'
+HTTNOT = 'न'
+HTTWHILE = 'किन्ञ्चित्काल' 
+HTTIF = 'यदि'
+HTTTHEN = 'तदा'
+HTTELIF = 'अथवा'
+HTTELSE = 'अथ'
+HTTINPUT ='आगम'
+HTTOUTPUT='निर्गम'
+
+
 KEYWORDS=[
-    TTVAR,
-    TTAND,
-    TTOR,
-    TTNOT,
-    TTFOR,
-    TTWHILE,
-    TTIF,
-    TTTHEN,
-    TTELIF,
-    TTELSE,
-    TTINPUT,
-    TTOUTPUT
+    HTTAND,
+    HTTOR,
+    HTTNOT,
+    HTTWHILE,
+    HTTIF,
+    HTTTHEN,
+    HTTELIF,
+    HTTELSE,
+    HTTINPUT,
+    HTTOUTPUT
 ]
+
+
+converter = {
+    HTTAND: TTAND,
+    HTTOR: TTOR,
+    HTTNOT: TTNOT,
+    HTTWHILE: TTWHILE,
+    HTTIF: TTIF,
+    HTTTHEN: TTTHEN,
+    HTTELIF: TTELIF,
+    HTTELSE: TTELSE,
+    HTTINPUT: TTINPUT,
+    HTTOUTPUT: TTOUTPUT
+}
 class Token:
     def __init__(self,type_,value= None):
         self.type = type_
@@ -160,9 +188,9 @@ class Lexer:
             ret+=self.current_char 
             self.advance()
 
-    
+        #print(ret,str(ret) in KEYWORDS,converter.get(ret,-1))
         if(str(ret) in KEYWORDS):
-            return Token(ret)
+            return Token(str(converter[ret]))
         return Token(TTIDENTIFIER,ret)
     def make_number(self):
         ret=''
@@ -333,9 +361,10 @@ class Parser:
                 self.tot+=1
                 self.advance()
             else :
-               # print("SEMICOLON",self.cur_tok.type)
+                print("1SEMICOLON",self.cur_tok)
                 self.tot+=MAKEPERROR
                 return ret
+            #print(ret)
         return ret
 
 
@@ -352,15 +381,16 @@ def run(text):
     lex = Lexer(text)
     tokens = lex.make_token()
     #print(LETTERS)
-    #print("OK",tokens)
+
     if(type(tokens)==str): return tokens
     #print("LEXICAL A OK")
     #print("After Tokenization: ",tokens)
     parser = Parser(tokens)
     tree = parser.pasrse()
-    #print(parser.tot,len(tokens))
-    #print(tree)
     if(not tokens or parser.tot!= len(tokens)): 
+        print("OK",tokens)
+        print(parser.tot,len(tokens))
+        print(tree)
         print("INVALID EXPRESSION")
         return
     #return interpretter(tree,zura)

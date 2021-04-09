@@ -1,27 +1,27 @@
 X=0;
 अ=0;
-IN X;
+आगम X;
 
 ans =1;
 
-WHILE X>0 THEN
+किन्ञ्चित्काल X>0 तदा
 {
     ans = (ans*X);
     X=(X-1);
 };
 
-OUT ans;
-IF ans == 120 THEN
+निर्गम ans;
+यदि ans == 120 तदा
 {
     ans= (ans+5);
-    OUT ans;
+    निर्गम ans;
 }
-ELIF ans==2 THEN 
+अथवा ans==2 तदा
 {
     ans =5;
 }
-ELSE 
+अथ
 {
     ans =(- ans);
 };
-OUT ans;
+निर्गम ans;

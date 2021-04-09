@@ -4,12 +4,16 @@ li $t1, 0
 sw $t1,396 ($sp)
 li $t1, 0
 sw $t1,392 ($sp)
+li $t1, 5
+sw $t1,396 ($sp)
+li $t1, 6
+sw $t1,392 ($sp)
 li $v0, 5
 syscall
 sw $v0,396 ($sp)
 li $t1, 1
 sw $t1,388 ($sp)
-whilestatement4:
+whilestatement6:
 lw $t1,396 ($sp)
 li $t2, 0
 li $t3, 0
@@ -23,7 +27,7 @@ li $t1, 1
 bne $t4, 0, yareyare2
 li $t1, 0
 yareyare2:
-bne $t1, 1, endwhile4
+bne $t1, 1, endwhile6
 lw $t1,388 ($sp)
 lw $t2,396 ($sp)
 mult $t1, $t2
@@ -39,8 +43,8 @@ sw $t3,376 ($sp)
 lw $t1,376 ($sp)
 move $t2, $t1
 sw $t2,396 ($sp)
- b whilestatement4
-endwhile4:
+ b whilestatement6
+endwhile6:
 li $v0, 1
 lw $a0,388 ($sp)
 syscall
@@ -57,7 +61,7 @@ li $t1, 1
 bne $t4, 0, yareyare4
 li $t1, 0
 yareyare4:
-beq $t1, 1, ifstatement11
+beq $t1, 1, ifstatement13
 lw $t1,388 ($sp)
 li $t2, 2
 li $t3, 0
@@ -71,16 +75,16 @@ li $t1, 1
 bne $t4, 0, yareyare6
 li $t1, 0
 yareyare6:
-beq $t1, 1, ifstatement13
+beq $t1, 1, ifstatement15
 li $t1, 1
 move $t4, $t1
 li $t1, 1
 bne $t4, 0, yareyare7
 li $t1, 0
 yareyare7:
-beq $t1, 1, ifstatement14
- b ifstatement15
-ifstatement11:
+beq $t1, 1, ifstatement16
+ b ifstatement17
+ifstatement13:
 lw $t1,388 ($sp)
 li $t2, 5
 add $t3, $t1, $t2
@@ -91,12 +95,12 @@ sw $t2,388 ($sp)
 li $v0, 1
 lw $a0,388 ($sp)
 syscall
- b ifstatement15
-ifstatement13:
+ b ifstatement17
+ifstatement15:
 li $t1, 5
 sw $t1,388 ($sp)
- b ifstatement15
-ifstatement14:
+ b ifstatement17
+ifstatement16:
 li $t1, 0
 lw $t2,388 ($sp)
 sub $t3, $t1, $t2
@@ -104,8 +108,8 @@ sw $t3,360 ($sp)
 lw $t1,360 ($sp)
 move $t2, $t1
 sw $t2,388 ($sp)
- b ifstatement15
-ifstatement15:
+ b ifstatement17
+ifstatement17:
 li $v0, 1
 lw $a0,388 ($sp)
 syscall
